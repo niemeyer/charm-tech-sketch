@@ -13,7 +13,7 @@ class LeaderElected(EventBase): pass
 class LeaderSettingsChanged(EventBase): pass
 
 
-class CharmEvents(EventsBase):
+class CharmEventsBase(EventsBase):
 
     install = Event(InstallEvent)
     start = Event(StartEvent)
@@ -27,6 +27,6 @@ class CharmEvents(EventsBase):
     leader_settings_changed = Event(LeaderSettingsChanged)
 
 
-class Charm(Object):
+class CharmBase(Object):
 
-    on = CharmEvents()
+    on = CharmEventsBase()
