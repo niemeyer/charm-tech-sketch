@@ -9,24 +9,24 @@ class UpdateStatusEvent(EventBase): pass
 class UpgradeCharmEvent(EventBase): pass
 class PreSeriesUpgradeEvent(EventBase): pass
 class PostSeriesUpgradeEvent(EventBase): pass
-class LeaderElected(EventBase): pass
-class LeaderSettingsChanged(EventBase): pass
+class LeaderElectedEvent(EventBase): pass
+class LeaderSettingsChangedEvent(EventBase): pass
 
 
-class CharmEvents(EventsBase):
+class CharmEventsBase(EventsBase):
 
     install = Event(InstallEvent)
     start = Event(StartEvent)
-    stop = Event(StartEvent)
+    stop = Event(StopEvent)
     update_status = Event(UpdateStatusEvent)
     config_changed = Event(ConfigChangedEvent)
     upgrade_charm = Event(UpgradeCharmEvent)
     pre_series_upgrade = Event(PreSeriesUpgradeEvent)
     post_series_upgrade = Event(PostSeriesUpgradeEvent)
-    leader_elected = Event(LeaderElected)
-    leader_settings_changed = Event(LeaderSettingsChanged)
+    leader_elected = Event(LeaderElectedEvent)
+    leader_settings_changed = Event(LeaderSettingsChangedEvent)
 
 
-class Charm(Object):
+class CharmBase(Object):
 
-    on = CharmEvents()
+    on = CharmEventsBase()
